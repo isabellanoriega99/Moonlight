@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class Moonlight: MoonlightContract {
+public class Moonlight: MoonlightContract {
 
     private let session: URLSession
     private let decoder: JSONDecoder
