@@ -8,7 +8,7 @@ final class MoonlightTests: XCTestCase {
 
     override func setUpWithError() throws {
         try super.setUpWithError()
-        moonlight = Moonlight2()
+        moonlight = Moonlight()
     }
 
     override func tearDownWithError() throws {

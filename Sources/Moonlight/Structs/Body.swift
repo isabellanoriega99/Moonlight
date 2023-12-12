@@ -8,6 +8,6 @@
 import Foundation
 
 public struct Body {
-    let contentType: String
-    let content: Data
+    public let contentType: String
+    public let content: Data
 }

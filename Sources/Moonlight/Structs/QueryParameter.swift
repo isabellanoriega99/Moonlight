@@ -8,6 +8,6 @@
 import Foundation
 
 public struct QueryParameter {
-    let name: String
-    let value: String
+    public let name: String
+    public let value: String
 }

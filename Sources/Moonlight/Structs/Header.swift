@@ -8,6 +8,6 @@
 import Foundation
 
 public struct Header {
-    let type: String
-    let value: String
+    public let type: String
+    public let value: String
 }
