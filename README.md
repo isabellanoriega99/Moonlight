@@ -7,7 +7,7 @@ The Moonlight Library offers a quick implementation for network requests. You ha
 - [Structs you need to know](#structs)
 
 
-## Requests using Async/Await with throw
+## Requests using Async/Await
 Description: Performs an asynchronous network request that can throw errors.
 
 ```swift
