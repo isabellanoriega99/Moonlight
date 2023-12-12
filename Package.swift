@@ -12,6 +12,9 @@ let package = Package(
             name: "Moonlight",
             targets: ["Moonlight"]),
     ],
+    dependencies: [
+    .package(url: "https://github.com/isabellanoriega99/Moonlight2", from: "latest"),
+    ],
     targets: [
         .target(
             name: "Moonlight",
