@@ -26,6 +26,7 @@ Parameters:
    - queryParameters (Type: [QueryParameter]?) - Optional query parameters for the request.
    - headers (Type: [Header]?) - Optional headers for the request.
    - bodies (Type: [Body]?) - Optional request bodies.
+ 
  Returns:
    - Type: (data: Data?, response: URLResponse?, decoded: T?) - A tuple containing the data,
      response, and decoded object.
