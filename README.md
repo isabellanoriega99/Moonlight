@@ -11,7 +11,7 @@ The Moonlight Library offers a quick implementation for network requests. You ha
 Description: Performs an asynchronous network request that can throw errors.
 
 ```swift
-Moonlight.requestWithAsyncThrows(for url: String, responseType: T.Type?, requestType: HTTPMethod?,
+Moonlight.requestWithAsyncAwait(for url: String, responseType: T.Type?, requestType: HTTPMethod?,
                                 queryParameters: [QueryParameter]?, headers: [Header]?, bodies: [Body]?) 
 ```
  Performs an asynchronous network request that can throw errors.
