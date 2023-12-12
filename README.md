@@ -11,13 +11,12 @@ The Moonlight Library offers a quick implementation for network requests. You ha
 Description: Performs an asynchronous network request without throwing errors.
 
 ```swift 
-func requestWithAsyncNoThrow<T: Decodable>(for url: String,
-                                               responseType: T.Type?,
-                                               requestType: String,
-                                               queryParameters: [QueryParameter]?,
-                                               headers: [Header]?,
-                                               bodies: [Body]?) async -> (data: Data?,
-                                                                          response: URLResponse?, decoded: T?)
+Moonlight.requestWithAsyncNoThrow(for url: String,
+                                responseType: T.Type?,
+                                requestType: String?,
+                                queryParameters: [QueryParameter]?,
+                                headers: [Header]?,
+                                bodies: [Body]?)
 ```
 Parameters:
    - url (Type: String) - The URL for the network request.
