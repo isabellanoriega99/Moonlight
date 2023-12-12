@@ -13,18 +13,22 @@ class Moonlight: MoonlightContract {
     private let session: URLSession
     private let decoder: JSONDecoder
 
-    init(session: URLSession = URLSession.shared, decoder: JSONDecoder = JSONDecoder()) {
+    public init(session: URLSession = URLSession.shared, decoder: JSONDecoder = JSONDecoder()) {
         self.session = session
         self.decoder = decoder
     }
 
-    func requestWithAsyncNoThrow<T: Decodable>(for url: String,
+    public func requestWithAsyncNoThrow<T: Decodable>(for url: String,
                                                responseType: T.Type?,
-                                               requestType: String = "GET",
+                                               requestType: String? = "GET",
                                                queryParameters: [QueryParameter]?,
                                                headers: [Header]?,
                                                bodies: [Body]?) async -> (data: Data?,
                                                                           response: URLResponse?, decoded: T?) {
+        guard let requestType = requestType else {
+            print("InvalidURL")
+            return (data: nil, response: nil, decoded: nil)
+        }
         guard let request = buildRequest(url: url,
                                    requestType: requestType,
                                    queryParameters: queryParameters,
@@ -43,13 +47,16 @@ class Moonlight: MoonlightContract {
         }
     }
 
-    func requestWithAsyncThrows<T: Decodable>(for url: String,
+    public func requestWithAsyncThrows<T: Decodable>(for url: String,
                                               responseType: T.Type?,
-                                              requestType: String = "GET",
+                                              requestType: String? = "GET",
                                               queryParameters: [QueryParameter]?,
                                               headers: [Header]?,
                                               bodies: [Body]?) async throws -> (data: Data,
                                                                                 response: URLResponse, decoded: T) {
+        guard let requestType = requestType else {
+            throw NetworkError.invalidURL
+        }
         guard let request = buildRequest(url: url,
                                    requestType: requestType,
                                    queryParameters: queryParameters,
@@ -63,13 +70,16 @@ class Moonlight: MoonlightContract {
         return (data: data, response: response, decoded: decoded)
     }
 
-    func requestWithCombine<T: Decodable>(for url: String,
+    public func requestWithCombine<T: Decodable>(for url: String,
                                           responseType: T.Type?,
-                                          requestType: String = "GET",
+                                          requestType: String? = "GET",
                                           queryParameters: [QueryParameter]?,
                                           headers: [Header]?,
                                           bodies: [Body]?) -> AnyPublisher<(data: Data,
                                                                             response: URLResponse, decoded: T), Error> {
+        guard let requestType = requestType else {
+            return Fail(error: NetworkError.invalidURL).eraseToAnyPublisher()
+        }
         guard let request = buildRequest(url: url,
                                    requestType: requestType,
                                    queryParameters: queryParameters,

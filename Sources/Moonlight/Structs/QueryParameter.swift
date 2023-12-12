@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct QueryParameter {
+public struct QueryParameter {
     let name: String
     let value: String
 }

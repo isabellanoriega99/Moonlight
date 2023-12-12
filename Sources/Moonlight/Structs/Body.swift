@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Body {
+public struct Body {
     let contentType: String
     let content: Data
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Header {
+public struct Header {
     let type: String
     let value: String
 }

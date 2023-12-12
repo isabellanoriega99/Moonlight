@@ -6,18 +6,18 @@ let package = Package(
     platforms: [.macOS(.v10_15),
                 .iOS(.v13),
                 .tvOS(.v13),
-                .watchOS(.v5)],
-    products: [.library(
+                .watchOS(.v6)],
+    products: [
+        .library(
             name: "Moonlight",
             targets: ["Moonlight"]),
     ],
-    targets: [.target(
+    targets: [
+        .target(
             name: "Moonlight",
-            path: "Sources"),
+            dependencies: []),
         .testTarget(
             name: "MoonlightTests",
-            dependencies: ["Moonlight"],
-            path: "Tests"),
-    ],
-    swiftLanguageVersions: [.v5]
+            dependencies: ["Moonlight"]),
+    ]
 )

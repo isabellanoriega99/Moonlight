@@ -22,7 +22,7 @@ protocol MoonlightContract {
 
     func requestWithAsyncNoThrow<T: Decodable>(for url: String,
                                                responseType: T.Type?,
-                                               requestType: String,
+                                               requestType: String?,
                                                queryParameters: [QueryParameter]?,
                                                headers: [Header]?,
                                                bodies: [Body]?) async -> (data: Data?,
@@ -30,7 +30,7 @@ protocol MoonlightContract {
 
     func requestWithAsyncThrows<T: Decodable>(for url: String,
                                               responseType: T.Type?,
-                                              requestType: String,
+                                              requestType: String?,
                                               queryParameters: [QueryParameter]?,
                                               headers: [Header]?,
                                               bodies: [Body]?) async throws -> (data: Data,
@@ -38,7 +38,7 @@ protocol MoonlightContract {
 
     func requestWithCombine<T: Decodable>(for url: String,
                                           responseType: T.Type?,
-                                          requestType: String,
+                                          requestType: String?,
                                           queryParameters: [QueryParameter]?,
                                           headers: [Header]?,
                                           bodies: [Body]?) -> AnyPublisher<(data: Data,
