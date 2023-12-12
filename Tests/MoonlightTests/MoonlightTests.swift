@@ -1,12 +1,18 @@
 import XCTest
+import Combine
 @testable import Moonlight
 
 final class MoonlightTests: XCTestCase {
-    func testExample() throws {
-        // XCTest Documentation
-        // https://developer.apple.com/documentation/xctest
 
-        // Defining Test Cases and Test Methods
-        // https://developer.apple.com/documentation/xctest/defining_test_cases_and_test_methods
+    var moonlight: MoonlightContract!
+
+    override func setUpWithError() throws {
+        try super.setUpWithError()
+        moonlight = Moonlight2()
+    }
+
+    override func tearDownWithError() throws {
+        moonlight = nil
+        try super.tearDownWithError()
     }
 }
