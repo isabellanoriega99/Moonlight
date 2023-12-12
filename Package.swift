@@ -18,7 +18,9 @@ let package = Package(
     targets: [
         .target(
             name: "Moonlight",
-            dependencies: []),
+            dependencies: [],
+            path: "Sources"
+        ),
         .testTarget(
             name: "MoonlightTests",
             dependencies: ["Moonlight"]),
