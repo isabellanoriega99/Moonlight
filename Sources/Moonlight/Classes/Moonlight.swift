@@ -24,7 +24,7 @@ public class Moonlight: MoonlightContract {
         self.decoder = decoder
     }
     
-    public func requestWithAsyncThrows<T: Decodable>(for url: String, responseType: T.Type? = nil, requestType: HTTPMethod? = .get, queryParameters: [QueryParameter]? = nil, headers: [Header]? = nil, bodies: [Body]? = nil) async throws -> (data: Data, response: URLResponse, decoded: T) {
+    public func requestWithAsyncAwait<T: Decodable>(for url: String, responseType: T.Type? = nil, requestType: HTTPMethod? = .get, queryParameters: [QueryParameter]? = nil, headers: [Header]? = nil, bodies: [Body]? = nil) async throws -> (data: Data, response: URLResponse, decoded: T) {
         
         guard let requestType = requestType else { throw NetworkError.invalidURL }
         
