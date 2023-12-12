@@ -26,8 +26,7 @@ Moonlight.requestWithAsyncAwait(for url: String, responseType: T.Type?, requestT
 
  - Throws: An error if the network request encounters an issue.
 
- - Returns: A tuple containing the data, response, and decoded object. 
- (data: Data, response: URLResponse, decoded: T).
+ - Returns: A decoded object. 
 
 ## Requests using Combine
 Description: Creates a Combine publisher for an asynchronous network request.
@@ -44,8 +43,7 @@ Moonlight.requestWithCombine(for url: String, responseType: T.Type?, requestType
    - headers: Optional headers for the request.
    - bodies: Optional request bodies.
 
- - Returns: A Combine publisher emitting a tuple containing the data, response,
-   and decoded object. AnyPublisher-(data: Data, response: URLResponse, decoded: T), Error- .
+ - Returns: A Combine publisher emitting decoded object.
 
 ## Structs you need to know
 

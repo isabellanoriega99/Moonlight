@@ -11,29 +11,29 @@ import Combine
 public protocol MoonlightContract {
     
     func requestWithAsyncAwait<T: Decodable>(
-        for url: String, responseType: T.Type?, requestType: HTTPMethod?,
+        for url: String, decodeType: T.Type?, requestType: HTTPMethod?,
         queryParameters: [QueryParameter]?, headers: [Header]?, bodies: [Body]?
-    ) async throws -> (data: Data, response: URLResponse, decoded: T)
+    ) async throws -> T
     
     func requestWithCombine<T: Decodable>(
-        for url: String, responseType: T.Type?, requestType: HTTPMethod?,
+        for url: String, decodeType: T.Type?, requestType: HTTPMethod?,
         queryParameters: [QueryParameter]?, headers: [Header]?, bodies: [Body]?
-    ) -> AnyPublisher<(data: Data, response: URLResponse, decoded: T), Error>
+    ) -> AnyPublisher<T, Error>
 }
 
 extension MoonlightContract {
     
     func requestWithAsyncAwait<T: Decodable>(
-        for url: String, responseType: T.Type? = nil, requestType: HTTPMethod? = .get,
+        for url: String, decodeType: T.Type? = nil, requestType: HTTPMethod? = .get,
         queryParameters: [QueryParameter]? = nil, headers: [Header]? = nil, bodies: [Body]? = nil
-    ) async throws -> (data: Data, response: URLResponse, decoded: T) {
+    ) async throws -> T {
         fatalError("Default implementation, should be overridden by conforming types")
     }
     
     func requestWithCombine<T: Decodable>(
-        for url: String, responseType: T.Type? = nil, requestType: HTTPMethod? = .get,
+        for url: String, decodeType: T.Type? = nil, requestType: HTTPMethod? = .get,
         queryParameters: [QueryParameter]? = nil, headers: [Header]? = nil, bodies: [Body]? = nil
-    ) -> AnyPublisher<(data: Data, response: URLResponse, decoded: T), Error> {
+    ) -> AnyPublisher<T, Error> {
         fatalError("Default implementation, should be overridden by conforming types")
     }
 }

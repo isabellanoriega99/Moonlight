@@ -28,9 +28,9 @@ public class Moonlight: MoonlightContract {
     }
     
     public func requestWithAsyncAwait<T: Decodable>(
-        for url: String, responseType: T.Type? = nil, requestType: HTTPMethod? = .get,
+        for url: String, decodeType: T.Type? = nil, requestType: HTTPMethod? = .get,
         queryParameters: [QueryParameter]? = nil, headers: [Header]? = nil, bodies: [Body]? = nil
-    ) async throws -> (data: Data, response: URLResponse, decoded: T) {
+    ) async throws -> T {
         
         guard let requestType = requestType else { throw NetworkError.invalidURL }
         
@@ -46,15 +46,18 @@ public class Moonlight: MoonlightContract {
         }
         
         let (data, response) = try await session.data(for: request)
+        #if DEBUG
+        self.debugLog("\(response)")
+        #endif
         let decoded = try decoder.decode(T.self, from: data)
-        return (data: data, response: response, decoded: decoded)
+        return decoded
         
     }
     
     public func requestWithCombine<T: Decodable>(
-        for url: String, responseType: T.Type? = nil, requestType: HTTPMethod? = .get,
+        for url: String, decodeType: T.Type? = nil, requestType: HTTPMethod? = .get,
         queryParameters: [QueryParameter]? = nil, headers: [Header]? = nil, bodies: [Body]? = nil
-    ) -> AnyPublisher<(data: Data, response: URLResponse, decoded: T), Error> {
+    ) -> AnyPublisher<T, Error> {
         
         guard let requestType = requestType else {
             return Fail(error: NetworkError.invalidURL).eraseToAnyPublisher()
@@ -68,8 +71,11 @@ public class Moonlight: MoonlightContract {
         
         return session.dataTaskPublisher(for: request)
             .tryMap { data, response in
+                #if DEBUG
+                self.debugLog("\(response)")
+                #endif
                 let decoded = try self.decoder.decode(T.self, from: data)
-                return (data: data, response: response, decoded: decoded)
+                return decoded
             }
             .mapError { error in
                 #if DEBUG
