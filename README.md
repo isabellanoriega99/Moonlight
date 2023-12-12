@@ -2,7 +2,7 @@
 The Moonlight Library offers a quick implementation for network requests. You have the option of choosing between two functions each time you want to make an API call. Each of the functions will be thouroughly explained below. This library uses URLSessions and JSONDecoder.
 
 ## Types of Requests and More:
-- [Requests using Async/Await with throw](#async_throw)
+- [Requests using Async/Await](#async_throw)
 - [Requests using Combine](#combine)
 - [Structs you need to know](#structs)
 
