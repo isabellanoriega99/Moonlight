@@ -8,9 +8,6 @@
 import Foundation
 import Combine
 
-import Combine
-import Foundation
-
 public class Moonlight: MoonlightContract {
     
     private let session: URLSession
@@ -101,11 +98,7 @@ public class Moonlight: MoonlightContract {
         
         headers?.forEach { request.addValue($0.value, forHTTPHeaderField: $0.type) }
         
-        bodies.map { bodyArray in
-            guard let body = bodyArray.first else { return }
-            request.addValue(body.contentType, forHTTPHeaderField: "Content-Type")
-            request.httpBody = body.content
-        }
+        bodies?.forEach { request.httpBody = $0.content.data(using: .utf8) }
         
         #if DEBUG
         self.debugLog("\(request)")
