@@ -8,16 +8,6 @@
 import Foundation
 import Combine
 
-//protocol MoonlightContract {
-//
-//    func request(for url: String,
-//                 httpMethod: String,
-//                 headers: [Header]?,
-//                 queryParameters: [QueryParameter],
-//                 bodies: [Body]?,
-//                 with feature: FeatureType) async -> Any
-//}
-
 protocol MoonlightContract {
 
     func requestWithAsyncNoThrow<T: Decodable>(for url: String,

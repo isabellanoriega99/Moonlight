@@ -35,13 +35,12 @@ Parameters:
 Description: Performs an asynchronous network request that can throw errors.
 
 ```swift
-func requestWithAsyncThrows<T: Decodable>(for url: String,
-                                              responseType: T.Type?,
-                                              requestType: String,
-                                              queryParameters: [QueryParameter]?,
-                                              headers: [Header]?,
-                                              bodies: [Body]?) async throws -> (data: Data,
-                                                                                response: URLResponse, decoded: T)
+Moonlight.requestWithAsyncThrows(for url: String,
+                                responseType: T.Type?,
+                                requestType: String?,
+                                queryParameters: [QueryParameter]?,
+                                headers: [Header]?,
+                                bodies: [Body]?) 
 ```
  Performs an asynchronous network request that can throw errors.
 
@@ -55,19 +54,19 @@ func requestWithAsyncThrows<T: Decodable>(for url: String,
 
  - Throws: An error if the network request encounters an issue.
 
- - Returns: A tuple containing the data, response, and decoded object.
+ - Returns: A tuple containing the data, response, and decoded object. 
+ (data: Data, response: URLResponse, decoded: T).
 
 ## Requests using Combine
 Description: Creates a Combine publisher for an asynchronous network request.
 
 ```swift
-func requestWithCombine<T: Decodable>(for url: String,
-                                          responseType: T.Type?,
-                                          requestType: String,
-                                          queryParameters: [QueryParameter]?,
-                                          headers: [Header]?,
-                                          bodies: [Body]?) -> AnyPublisher<(data: Data,
-                                                                            response: URLResponse, decoded: T), Error>
+Moonlight.requestWithCombine(for url: String,
+                            responseType: T.Type?,
+                            requestType: String?,
+                            queryParameters: [QueryParameter]?,
+                            headers: [Header]?,
+                            bodies: [Body]?)
 ```
 - Parameters:
    - url: The URL for the network request.
@@ -78,7 +77,7 @@ func requestWithCombine<T: Decodable>(for url: String,
    - bodies: Optional request bodies.
 
  - Returns: A Combine publisher emitting a tuple containing the data, response,
-   and decoded object.
+   and decoded object. AnyPublisher-(data: Data, response: URLResponse, decoded: T), Error- .
 
 ## Structs you need to know
 
