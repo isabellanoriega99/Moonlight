@@ -49,9 +49,9 @@ Moonlight.requestWithCombine(for url: String, responseType: T.Type?, requestType
 
 - QueryParameter = QueryParameter(key: "param", value: "value")
 - Header = Header(name: "type", value: "Bearer token")
-- Body = Body(contentType: "application/json", data: jsonData)
+- Body = Body(content: String)
 - HTTPMethod = is an enum with all the httpMethods accepted by URLSessions (.get, .post, ...)
 
 These are examples of what the structs can contain, however they allow any type
-of "name", "value", "contentType", and "data", as long as they are supported by
+of "name", "value", "content", as long as they are supported by
 URLSession.
